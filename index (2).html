@@ -1,0 +1,434 @@
+ <!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart-Tech Nebula | Unit Produksi TKJ</title>
+    <!-- Memuat Tailwind CSS untuk styling responsif -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Memuat Lucide Icons (Untuk ikon bertema luar angkasa/teknologi) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        /* Gaya Kustom untuk Tampilan Nebula/Kosmik */
+        :root {
+            --deep-space: #0b0f1a; /* Latar belakang sangat gelap */
+            --nebula-purple: #a855f7; /* Violet neon */
+            --nebula-cyan: #06b6d4; /* Cyan neon */
+            --text-glow: 0 0 8px rgba(168, 85, 247, 0.6); /* Efek glow ringan */
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--deep-space);
+            color: #e5e7eb; /* Teks terang */
+            /* Gradien radial untuk efek Nebula/Galaksi */
+            background-image: radial-gradient(at 0% 0%, #171d38 0%, transparent 50%),
+                              radial-gradient(at 100% 100%, #301740 0%, transparent 50%);
+            background-attachment: fixed;
+        }
+        .text-glow {
+            text-shadow: var(--text-glow);
+        }
+        .text-purple {
+            color: var(--nebula-purple);
+        }
+        .text-cyan {
+            color: var(--nebula-cyan);
+        }
+        .btn-cosmic {
+            /* Gradien untuk tombol yang bersemangat */
+            background: linear-gradient(90deg, var(--nebula-purple) 0%, var(--nebula-cyan) 100%);
+            color: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(6, 182, 212, 0.7); /* Efek glow tombol */
+            font-weight: 700;
+        }
+        .btn-cosmic:hover {
+            opacity: 0.9;
+            box-shadow: 0 0 25px rgba(168, 85, 247, 1);
+            transform: translateY(-2px);
+        }
+        .card-cosmic {
+            background-color: #111827; /* Warna gelap untuk kartu */
+            border: 1px solid #374151;
+            transition: transform 0.3s;
+        }
+        .card-cosmic:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(6, 182, 212, 0.3); /* Glow biru pada hover */
+        }
+        /* Style untuk input form */
+        .input-cosmic {
+            background-color: #0d121c; /* Lebih gelap dari card */
+            border: 1px solid #374151;
+            color: #e5e7eb;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .input-cosmic:focus {
+            border-color: var(--nebula-cyan);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.5);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <!-- Header / Navigasi (Responsive) -->
+    <header class="p-4 border-b border-gray-800 sticky top-0 z-10 bg-deep-space bg-opacity-90 backdrop-blur-sm">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-extrabold text-white tracking-wider text-glow">
+                SMART-TECH <span class="text-cyan">NEBULA</span>
+            </h1>
+            <nav class="hidden md:flex space-x-6 font-medium">
+                <a href="#missions" class="text-gray-300 hover:text-cyan transition text-glow">Layanan</a>
+                <a href="#pricelist" class="text-gray-300 hover:text-cyan transition text-glow">Pricelist</a>
+                <a href="#profile" class="text-gray-300 hover:text-cyan transition text-glow">Profil Kami</a>
+                <a href="#gallery" class="text-gray-300 hover:text-cyan transition text-glow">Galeri</a>
+                <a href="#launch" class="text-gray-300 hover:text-cyan transition text-glow">Kontak</a>
+            </nav>
+            <button id="mobile-menu-btn" class="md:hidden text-cyan focus:outline-none">
+                <i data-lucide="satellite"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Drawer (Responsive: Muncul dari samping) -->
+    <div id="mobile-menu" class="fixed inset-0 z-20 bg-deep-space transform -translate-x-full transition-transform duration-300 md:hidden">
+        <div class="flex justify-end p-4">
+            <button id="close-mobile-menu-btn" class="text-cyan focus:outline-none">
+                <i data-lucide="x"></i>
+            </button>
+        </div>
+        <nav class="flex flex-col items-center space-y-8 text-xl p-8">
+            <a href="#missions" class="text-gray-200 hover:text-cyan transition" onclick="toggleMenu()">Layanan</a>
+            <a href="#pricelist" class="text-gray-200 hover:text-cyan transition" onclick="toggleMenu()">Pricelist</a>
+            <a href="#profile" class="text-gray-200 hover:text-cyan transition" onclick="toggleMenu()">Profil</a>
+            <a href="#gallery" class="text-gray-200 hover:text-cyan transition" onclick="toggleMenu()">Galeri</a>
+            <a href="#launch" class="text-gray-200 hover:text-cyan transition" onclick="toggleMenu()">Kontak</a>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+
+        <!-- Hero Section: Cosmic Launch -->
+        <section class="text-center py-20 md:py-32 max-w-7xl mx-auto px-4">
+            <h2 class="text-5xl sm:text-7xl font-extrabold mb-4 leading-tight text-glow">
+                <span class="text-purple">NAVIGATE</span> YOUR TECH UNIVERSE
+            </h2>
+            <p class="text-xl sm:text-2xl text-gray-400 mb-8 max-w-3xl mx-auto">
+                Unit Produksi TKJ Smart-Tech: Misi teknis Anda dimulai di sini. Solusi di kecepatan cahaya.
+            </p>
+            <a href="#missions" class="inline-block btn-cosmic text-xl py-3 px-10 rounded-full">
+                <i data-lucide="rocket" class="w-6 h-6 inline-block mr-2"></i> JELAJAHI LAYANAN
+            </a>
+
+            <!-- Ilustrasi Utama: Server Nebula/Kosmik yang baru ditambahkan -->
+            <div class="mt-16 max-w-5xl mx-auto">
+                <img src="sekolah.jpg"
+                    alt="Ilustrasi server rack berteknologi tinggi" 
+                    class="w-full h-auto rounded-xl shadow-2xl transition duration-500 transform hover:scale-[1.01] border-2 border-cyan/50 opacity-80"/>
+            </div>
+            <!-- Akhir Ilustrasi Utama -->
+
+        </section>
+
+        <!-- Layanan (Cosmic Missions) -->
+        <section id="missions" class="py-16 md:py-24 max-w-7xl mx-auto px-4">
+            <h3 class="text-3xl sm:text-4xl font-bold text-center mb-16 text-cyan text-glow">Layanan Kami: Cosmic Missions</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- Kartu Misi 1: Hardware -->
+                <div class="card-cosmic p-6 rounded-xl text-center">
+                    <!-- Ganti URL placeholder ini dengan foto perbaikan hardware Anda -->
+                    <img src="https://placehold.co/600x300/6d28d9/f5f3ff?text=HARDWARE+REPAIR" 
+                            alt="Foto perbaikan hardware" 
+                            class="w-full h-40 object-cover rounded-lg mb-4 border border-purple/50"/>
+                    <h4 class="text-2xl font-bold mb-2 text-white">HARDWARE CORE RESCUE</h4>
+                    <p class="text-gray-400 text-sm">Perbaikan komponen fisik (PC, laptop) dan penggantian *part* yang rusak. Kami memperbaiki inti sistem Anda.</p>
+                    <a href="#pricelist" class="mt-4 inline-block text-cyan font-medium text-sm hover:underline">Lihat Biaya &gt;</a>
+                </div>
+
+                <!-- Kartu Misi 2: Software -->
+                <div class="card-cosmic p-6 rounded-xl text-center">
+                    <!-- Ganti URL placeholder ini dengan foto optimasi software Anda -->
+                    <img src="https://placehold.co/600x300/0891b2/e0f2f1?text=SYSTEM+OPTIMIZATION" 
+                            alt="Foto optimasi software" 
+                            class="w-full h-40 object-cover rounded-lg mb-4 border border-cyan/50"/>
+                    <h4 class="text-2xl font-bold mb-2 text-white">SYSTEM OPTIMIZATION</h4>
+                    <p class="text-gray-400 text-sm">Instalasi OS, pembersihan virus, dan *upgrade* perangkat lunak untuk kecepatan dan performa maksimal.</p>
+                    <a href="#pricelist" class="mt-4 inline-block text-cyan font-medium text-sm hover:underline">Lihat Biaya &gt;</a>
+                </div>
+
+                <!-- Kartu Misi 3: Jaringan -->
+                <div class="card-cosmic p-6 rounded-xl text-center">
+                    <!-- Ganti URL placeholder ini dengan foto konfigurasi jaringan Anda -->
+                    <img src="https://placehold.co/600x300/059669/ccfbf1?text=NETWORK+CONFIG" 
+                            alt="Foto konfigurasi jaringan" 
+                            class="w-full h-40 object-cover rounded-lg mb-4 border border-purple/50"/>
+                    <h4 class="text-2xl font-bold mb-2 text-white">INTERSTELLAR NETWORK</h4>
+                    <p class="text-gray-400 text-sm">Instalasi, konfigurasi, dan *troubleshooting* jaringan untuk koneksi yang stabil dan cepat.</p>
+                    <a href="#pricelist" class="mt-4 inline-block text-cyan font-medium text-sm hover:underline">Lihat Biaya &gt;</a>
+                </div>
+
+            </div>
+        </section>
+        
+        <!-- Pricelist Section -->
+        <section id="pricelist" class="py-16 md:py-24 max-w-4xl mx-auto px-4">
+            <h3 class="text-3xl sm:text-4xl font-bold text-center mb-16 text-purple text-glow">Pricelist: Energy Cost per Mission</h3>
+            
+            <div class="space-y-6">
+                <!-- Item 1 -->
+                <div class="flex flex-col sm:flex-row justify-between items-center p-4 card-cosmic rounded-lg">
+                    <div class="flex-1 text-center sm:text-left mb-2 sm:mb-0">
+                        <p class="text-xl font-bold text-cyan">OS Re-Install (Basic System Reboot)</p>
+                        <p class="text-gray-400 text-sm">Instalasi Windows/Linux/macOS standar + Driver lengkap.</p>
+                    </div>
+                    <p class="text-3xl font-extrabold text-white ml-0 sm:ml-4">Rp 50.000</p>
+                </div>
+                
+                <!-- Item 2 -->
+                <div class="flex flex-col sm:flex-row justify-between items-center p-4 card-cosmic rounded-lg">
+                    <div class="flex-1 text-center sm:text-left mb-2 sm:mb-0">
+                        <p class="text-xl font-bold text-cyan">Virus & Malware Cleanup (Digital Purge)</p>
+                        <p class="text-gray-400 text-sm">Pembersihan mendalam dari ancaman digital dan optimasi sistem.</p>
+                    </div>
+                    <p class="text-3xl font-extrabold text-white ml-0 sm:ml-4">Rp 30.000</p>
+                </div>
+                
+                <!-- Item 3 -->
+                <div class="flex flex-col sm:flex-row justify-between items-center p-4 card-cosmic rounded-lg">
+                    <div class="flex-1 text-center sm:text-left mb-2 sm:mb-0">
+                        <p class="text-xl font-bold text-cyan">Hardware Diagnosis (Deep Scan)</p>
+                        <p class="text-gray-400 text-sm">Pemeriksaan kerusakan komponen, biaya di luar penggantian *part*.</p>
+                    </div>
+                    <p class="text-3xl font-extrabold text-white ml-0 sm:ml-4">Rp 20.000</p>
+                </div>
+
+                <!-- Item 4 (Estimasi Jaringan) -->
+                <div class="flex flex-col sm:flex-row justify-between items-center p-4 card-cosmic rounded-lg">
+                    <div class="flex-1 text-center sm:text-left mb-2 sm:mb-0">
+                        <p class="text-xl font-bold text-cyan">Instalasi Jaringan (Per Titik)</p>
+                        <p class="text-gray-400 text-sm">Pemasangan dan konfigurasi jaringan LAN/Wi-Fi (Harga per titik akses).</p>
+                    </div>
+                    <p class="text-3xl font-extrabold text-white ml-0 sm:ml-4">Mulai Rp 75.000</p>
+                </div>
+                
+            </div>
+            <p class="text-center text-gray-500 text-sm mt-8">Harga adalah estimasi jasa. Harga *part* tambahan akan dikonfirmasi terpisah setelah diagnosis.</p>
+        </section>
+
+
+        <!-- Keunggulan (Profile Section) -->
+        <section id="profile" class="py-16 md:py-24 bg-[#111827] max-w-full">
+            <div class="max-w-7xl mx-auto px-4 text-center">
+                <h3 class="text-3xl sm:text-4xl font-bold mb-6 text-purple text-glow">Profile: Unit Produksi TKJ Smart-Tech</h3> 
+                <p class="text-gray-400 max-w-4xl mx-auto mb-12 text-lg">
+                    Unit Produksi **Smart-Tech ** adalah *platform* wirausaha resmi Jurusan Teknik Komputer dan Jaringan (TKJ). Dijalankan oleh **siswa-siswa pilihan kelas XI**, kami menyediakan solusi teknis profesional sambil membangun pengalaman kerja nyata. Setiap layanan yang Anda gunakan mendukung pengembangan kompetensi siswa.
+                </p>
+
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+
+                    <!-- Fitur 1: Diagnosis -->
+                    <div class="p-4 rounded-lg bg-gray-900 border border-purple/50">
+                        <i data-lucide="compass" class="w-8 h-8 text-cyan mb-2 mx-auto"></i>
+                        <p class="text-lg font-bold text-white mb-1">Precise Navigation</p>
+                        <p class="text-sm text-gray-400">Diagnosis Akurat & Terperinci</p>
+                    </div>
+
+                    <!-- Fitur 2: Kecepatan -->
+                    <div class="p-4 rounded-lg bg-gray-900 border border-purple/50">
+                        <i data-lucide="timer" class="w-8 h-8 text-cyan mb-2 mx-auto"></i>
+                        <p class="text-lg font-bold text-white mb-1">Warp Speed Service</p>
+                        <p class="text-sm text-gray-400">Pengerjaan Cepat & Efisien</p>
+                    </div>
+
+                    <!-- Fitur 3: Kualitas SDM -->
+                    <div class="p-4 rounded-lg bg-gray-900 border border-purple/50">
+                        <i data-lucide="graduation-cap" class="w-8 h-8 text-cyan mb-2 mx-auto"></i>
+                        <p class="text-lg font-bold text-white mb-1">Certified Crew</p>
+                        <p class="text-sm text-gray-400">Dikerjakan Siswa Ahli & Terlatih</p>
+                    </div>
+
+                    <!-- Fitur 4: Garansi -->
+                    <div class="p-4 rounded-lg bg-gray-900 border border-purple/50">
+                        <i data-lucide="award" class="w-8 h-8 text-cyan mb-2 mx-auto"></i>
+                        <p class="text-lg font-bold text-white mb-1">Mission Warranty</p>
+                        <p class="text-sm text-gray-400">Garansi Layanan Purna Jual</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section (New) -->
+        <section id="gallery" class="py-16 md:py-24 max-w-7xl mx-auto px-4">
+            <h3 class="text-3xl sm:text-4xl font-bold text-center mb-16 text-cyan text-glow">Galeri Misi: Bukti Operasi Lapangan</h3>
+            <!-- Grid: 1 kolom (default), 2 kolom (md), 3 kolom (lg), 5 kolom (xl) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+                
+                <!-- Foto 1: Perbaikan Hardware -->
+                <div class="card-cosmic p-2 rounded-xl overflow-hidden">
+                    <!-- Placeholder image untuk Hardware Rescue -->
+                    <img src="hadware.jpg" alt="Foto perbaikan hardware" class="w-full h-auto object-cover rounded-lg mb-3 border-2 border-purple/50 transition duration-300 hover:scale-[1.03]"/>
+                    <p class="text-sm text-gray-400 p-2">Siswa melakukan *Core Rescue* pada CPU/Komputer client.</p>
+                </div>
+
+
+                <!-- Foto 4: Perakitan PC -->
+                <div class="card-cosmic p-2 rounded-xl overflow-hidden">
+                    <!-- Placeholder image untuk PC Assembly -->
+                    <img src="konfig.jpg" alt="Foto perakitan PC" class="w-full h-auto object-cover rounded-lg mb-3 border-2 border-cyan/50 transition duration-300 hover:scale-[1.03]"/>
+                    <p class="text-sm text-gray-400 p-2">Siswa merakit dan menguji coba PC rakitan klien.</p>
+                </div>
+                
+                <!-- FOTO 5 BARU: Pelatihan atau Workshop -->
+                <div class="card-cosmic p-2 rounded-xl overflow-hidden">
+                    <!-- Placeholder image untuk Training/Workshop -->
+                    <img src="instalasi.jpg" alt="Foto workshop teknis" class="w-full h-auto object-cover rounded-lg mb-3 border-2 border-purple/50 transition duration-300 hover:scale-[1.03]"/>
+                    <p class="text-sm text-gray-400 p-2">Siswa menghadiri workshop/pelatihan teknis terkini.</p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- Call to Action / Kontak (Launch Ticket) -->
+        <section id="launch" class="py-16 md:py-24 max-w-4xl mx-auto px-4 text-center">
+            <h3 class="text-4xl font-extrabold text-white text-glow mb-4">Kontak: Launch Your Support Ticket!</h3>
+            <p class="text-xl text-gray-400 mb-8">Siap mengirim perangkat Anda ke AstroLab kami? Kirim pesan Anda di bawah, atau hubungi kami langsung.</p>
+            
+            <!-- FORMULIR KONTAK BARU -->
+            <div class="card-cosmic p-6 rounded-xl mx-auto max-w-lg mb-12 text-left">
+                <form id="contact-form" class="space-y-4">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-300 mb-1">Nama Lengkap</label>
+                        <input type="text" id="name" name="name" required placeholder="Nama Anda atau Instansi"
+                                class="input-cosmic w-full" aria-label="Nama Lengkap">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-300 mb-1">Email Anda</label>
+                        <input type="email" id="email" name="email" required placeholder="email@contoh.sch.id"
+                                class="input-cosmic w-full" aria-label="Email Anda">
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-300 mb-1">Pesan / Detail Masalah (Mission Details)</label>
+                        <textarea id="message" name="message" rows="4" required placeholder="Jelaskan jenis perangkat dan masalah teknis yang dialami..."
+                                    class="input-cosmic w-full resize-none" aria-label="Pesan / Detail Masalah"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="w-full btn-cosmic text-xl py-3 rounded-xl flex items-center justify-center">
+                        <i data-lucide="send" class="w-6 h-6 inline-block mr-2"></i> KIRIM MISI
+                    </button>
+                </form>
+            </div>
+            <!-- AKHIR FORMULIR KONTAK BARU -->
+
+            <div class="mt-8 text-center text-gray-400">
+                <p class="nazilah mb-2">atau hubungi kami untuk respons instan:</p>
+                <p class="text-lg mb-2">
+                    Telepon/WhatsApp: 
+                    <!-- Tambahan Link WhatsApp -->
+                    <a href="https://wa.me/6281234567890" target="_blank" class="text-cyan font-bold hover:underline transition">
+                        +62 812-3456-7890
+                    </a>
+                </p>
+                <p class="text-lg">
+                    Lokasi Fisik: 
+                    <!-- Tambahan Link Google Maps Search -->
+                    <a href="https://www.google.com/maps/search/Lab+TKJ+Lantai+2+(Smart-Tech+Nebula+Base)" target="_blank" class="text-cyan font-bold hover:underline transition">
+                        Lab TKJ Lantai 2 (Smart-Tech Nebula Base)
+                    </a>
+                </p>
+            </div>
+
+            <!-- Custom Modal UI (Pengganti Alert) -->
+            <div id="contact-modal" class="fixed inset-0 bg-black bg-opacity-80 hidden items-center justify-center p-4 z-50" onclick="hideModal()">
+                <div class="bg-[#111827] p-8 rounded-xl max-w-sm w-full text-center shadow-2xl border-t-4 border-cyan" onclick="event.stopPropagation()">
+                    <i data-lucide="aperture" class="w-12 h-12 text-purple mx-auto mb-4 text-glow"></i>
+                    <p class="text-2xl font-bold mb-2 text-white">MISSION RECEIVED!</p>
+                    <p class="text-gray-400">Tiket misi Anda telah masuk ke sistem AstroLab. Kru Smart-Tech akan segera menghubungi Anda melalui email yang terdaftar untuk koordinasi pendaratan perangkat.</p>
+                    <button onclick="hideModal()" class="mt-6 bg-cyan-500 hover:bg-cyan-600 text-white py-2 px-6 rounded-full font-medium transition">Tutup Portal</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="p-6 text-center border-t border-gray-800 mt-10 bg-[#0f172a]">
+        <p class="text-gray-600 text-sm">&copy; <span id="current-year"></span> Smart-Tech Nebula | Unit Produksi TKJ XI</p>
+    </footer>
+
+    <!-- JavaScript (Satu File) -->
+    <script>
+        // Inisialisasi Lucide Icons
+        lucide.createIcons();
+
+        // Mengatur tahun saat ini di footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Logika untuk Mobile Menu (Hamburger)
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeMobileMenuBtn = document.getElementById('close-mobile-menu-btn');
+
+        function toggleMenu() {
+            const isHidden = mobileMenu.classList.contains('-translate-x-full');
+            if (isHidden) {
+                mobileMenu.classList.remove('-translate-x-full');
+                mobileMenu.classList.add('translate-x-0');
+            } else {
+                mobileMenu.classList.remove('translate-x-0');
+                mobileMenu.classList.add('-translate-x-full');
+            }
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMenu);
+        closeMobileMenuBtn.addEventListener('click', toggleMenu);
+
+        // Logika untuk Custom Modal
+        const contactModal = document.getElementById('contact-modal');
+
+        function showModal() {
+            contactModal.classList.remove('hidden');
+            contactModal.classList.add('flex');
+        }
+
+        function hideModal() {
+            contactModal.classList.remove('flex');
+            contactModal.classList.add('hidden');
+        }
+
+        // Logika untuk Form Submission
+        const contactForm = document.getElementById('contact-form');
+        
+        contactForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Mencegah submit form default
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            // Membuat body pesan yang lebih terstruktur
+            const emailBody = `Halo Smart-Tech Nebula Crew,\n\nSaya ingin mengirimkan Misi baru dengan detail sebagai berikut:\n\nPengirim: ${name}\nEmail: ${email}\n\nDetail Masalah (Mission Details):\n${message}\n\nTerima kasih.`;
+            
+            // Membuat URL mailto dengan data form yang di-encode
+            const mailtoUrl = `mailto:smarttech@sekolah.sch.id?subject=${encodeURIComponent('NEW MISSION TICKET: Dari ' + name)}&body=${encodeURIComponent(emailBody)}`;
+            
+            // Membuka klien email user (ini akan memicu pengiriman data)
+            window.location.href = mailtoUrl;
+
+            // Menampilkan modal konfirmasi setelah jeda singkat (agar mailto punya waktu untuk terbuka)
+            setTimeout(() => {
+                showModal();
+                // Opsional: Reset form setelah menampilkan modal
+                contactForm.reset();
+            }, 500); 
+        });
+    </script>
+</body>
+</html>
